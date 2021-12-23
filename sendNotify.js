@@ -314,48 +314,7 @@ async function sendNotify(text, desp, params = {}, author = '\n\n本通知 By cc
                                 console.log(`检测到设定了温馨提示,将在推送信息中置顶显示...`);
                                 strAllNotify = `\n【✨✨✨✨温馨提示✨✨✨✨】\n` + strAllNotify;
                                 console.log(strAllNotify);
-                            }
-
-                            if (DisableCkBody.code == 200) {
-                                console.log(`京东账号` + strdecPtPin + `已失效,自动禁用成功!\n`);
-
-                                strNotifyOneTemp = `京东账号: ` + strdecPtPin + ` 已失效,自动禁用成功!\n如果要继续挂机，请联系管理员重新登录账号，账号有效期为30天.`;
-								strNotifyOneTemp+="\n任务标题："+strtext;
-                                if (strAllNotify)
-                                    strNotifyOneTemp += `\n` + strAllNotify;
-                                desp = strNotifyOneTemp;
-                                if (WP_APP_TOKEN_ONE) {
-                                    await sendNotifybyWxPucher(`账号过期下线通知`, strNotifyOneTemp, strdecPtPin);
-                                }
-
-                            } else {
-                                console.log(`京东账号` + strPtPin + `已失效,自动禁用失败!\n`);
-                                strNotifyOneTemp = `京东账号: ` + strdecPtPin + ` 已失效!\n如果要继续挂机，请联系管理员重新登录账号，账号有效期为30天.`;
-								strNotifyOneTemp+="\n任务标题："+strtext;
-                                if (strAllNotify)
-                                    strNotifyOneTemp += `\n` + strAllNotify;
-                                desp = strNotifyOneTemp;
-                                if (WP_APP_TOKEN_ONE) {
-                                    await sendNotifybyWxPucher(`账号过期下线通知`, strNotifyOneTemp, strdecPtPin);
-                                }
-                            }
-                        } else {
-                            console.log(`该CK已经检测没有有效，跳过通知...`);
-                            llHaderror = true;
-                        }
-                    } else {
-                        console.log(`该CK已经禁用不需要处理`);
-                        llHaderror = true;
-                    }
-
-                }
-
-            } else {
-                console.log(`CK过期通知处理失败...`);
-            }
-            if (llHaderror)
-                return;
-        }        
+                            }      
 
         //检查黑名单屏蔽通知
         const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];
