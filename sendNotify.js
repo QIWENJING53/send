@@ -236,7 +236,7 @@ async function sendNotify(text, desp, params = {}, author = '\n\n本通知 By cc
  //调用python脚本，转换ck
   if(text.indexOf("cookie已失效") != -1)
   {
-    exec('task Zy143L_wskey_wskey.py ',function(error,stdout,stderr){
+    exec('task sign_wskey_wskey.py ',function(error,stdout,stderr){
         console.log(error,stdout,stderr);
     });
   } 
