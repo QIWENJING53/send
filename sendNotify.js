@@ -233,13 +233,6 @@ async function sendNotify(text, desp, params = {}, author = '\n\n本通知 By cc
                 }
             }
         }
- //调用python脚本，转换ck
-  if(text.indexOf("cookie已失效") != -1)
-  {
-    exec('task sign_wskey_wskey.py ',function(error,stdout,stderr){
-        console.log(error,stdout,stderr);
-    });
-  } 
   
         //检查黑名单屏蔽通知
         const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];
